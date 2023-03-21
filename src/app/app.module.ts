@@ -18,7 +18,7 @@ import { MapComponentComponent } from './map-component/map-component.component';
     AgmCoreModule.forRoot({
       // please get your own API key here:
       // https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en
-      apiKey: 'AIzaSyAvcDy5ZYc2ujCS6TTtI3RYX5QmuoV8Ffw'
+      apiKey: 'AIzaSyAjeJEPREBQFvAIqDSZliF0WjQrCld-Mh0'
     })
   ],
   providers: [],
