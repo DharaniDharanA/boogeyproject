@@ -12,7 +12,7 @@ export class MapComponentComponent implements OnInit {
   ngOnInit(): void {
   }
   // google maps zoom level
-  zoom: number = 8;
+  zoom: number = 20;
   
   // initial center position for the map
   lat: number = 11.0168;
