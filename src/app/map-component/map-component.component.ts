@@ -15,11 +15,13 @@ export class MapComponentComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getLatLong().subscribe((data) => {
-      const feed = data.feeds[0];
-      this.lat = Number(feed.field3);
-      this.lng = Number(feed.field4);
-    });
+    setInterval(() => {
+      this.getLatLong().subscribe((data) => {
+        const feed = data.feeds[1];
+        this.lat = Number(feed.field3);
+        this.lng = Number(feed.field4);
+      });
+    }, 10000);
   }
 
   getLatLong(): Observable<any> {

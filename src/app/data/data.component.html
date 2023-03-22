@@ -1,14 +1,43 @@
 <div class="data-wrapper" *ngIf="dataLoaded">
-    <figure>
-        <img src="https://picsum.photos/id/287/250/300" alt="Mountains">
-        <figcaption>{{temperature}}°C</figcaption>
-    </figure>
-    <figure style="--c:#fff5">
-        <img src="https://picsum.photos/id/475/250/300" alt="Mountains">
-        <figcaption>{{humidity}}%</figcaption>
-    </figure>
-    <figure style="--c:#fff5">
-        <img src="https://picsum.photos/id/475/250/300" alt="Mountains">
-        <figcaption>{{dewpoint}}</figcaption>
-    </figure>
+    <div class="cards-list">
+
+        <div class="card 1">
+            <div class="card_image"> <img src="https://thumbs.gfycat.com/JubilantGregariousDinosaur-size_restricted.gif" /> </div>
+            <div class="card_title title-black">
+                <p>Temperature</p>
+                <p>{{temperature | number:'1.2-2' }}C</p>
+            </div>
+        </div>
+
+        <div class="card 2">
+            <div class="card_image">
+                <img src="https://www.icegif.com/wp-content/uploads/icegif-5596.gif" />
+            </div>
+            <div class="card_title title-black">
+                <p>Humidity</p>
+                <p>{{humidity | number:'1.2-2' }}%</p>
+            </div>
+        </div>
+
+        <div class="card 3">
+            <div class="card_image">
+                <img src="https://thumbs.gfycat.com/AstonishingDifferentGuernseycow-max-1mb.gif" />
+            </div>
+            <div class="card_title title-black">
+                <p>Dewpoint</p>
+                <p>{{dewpoint | number:'1.2-2' }}</p>
+            </div>
+        </div>
+
+        <div class="card 4">
+            <div class="card_image">
+                <img [src]="imgsrc" />
+            </div>
+            <div class="card_title title-black">
+                <p>Cattle health</p>
+                <p>{{health}}</p>
+            </div>
+        </div> 
+
+    </div>
 </div>
