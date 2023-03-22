@@ -1,4 +1,14 @@
-<div *ngIf="dataLoaded">
-    <p>Field1 data: {{field1Data}}</p>
-    <p>Field2 data: {{field2Data}}</p>
+<div class="data-wrapper" *ngIf="dataLoaded">
+    <figure>
+        <img src="https://picsum.photos/id/287/250/300" alt="Mountains">
+        <figcaption>{{temperature}}°C</figcaption>
+    </figure>
+    <figure style="--c:#fff5">
+        <img src="https://picsum.photos/id/475/250/300" alt="Mountains">
+        <figcaption>{{humidity}}%</figcaption>
+    </figure>
+    <figure style="--c:#fff5">
+        <img src="https://picsum.photos/id/475/250/300" alt="Mountains">
+        <figcaption>{{dewpoint}}</figcaption>
+    </figure>
 </div>

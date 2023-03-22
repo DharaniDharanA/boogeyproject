@@ -9,20 +9,23 @@ import { HttpClient } from '@angular/common/http';
 export class DataComponent implements OnInit {
 
   dataLoaded = false;
-  field1Data: any;
-  field2Data: any;
-
-  constructor(private http: HttpClient) {}
-
-  ngOnInit() {
+  temperature: number = 0.0;
+  humidity: number = 0.0;
+  dewpoint: number = 0.0;
+  constructor(private http: HttpClient) {
     const url = 'https://api.thingspeak.com/channels/2074986/feeds.json?results=1';
     const apiKey = 'RX9EXFP2MR3D14MZ';
-
+    setInterval(() => {
     this.http.get(url + '&api_key=' + apiKey).subscribe((data: any) => {
-      this.field1Data = data.feeds[0].field1;
-      this.field2Data = data.feeds[0].field2;
+      this.temperature = data.feeds[0].field1;
+      this.humidity = data.feeds[0].field2;
+      this.dewpoint = this.temperature - ((100 - this.humidity) / 5);
       this.dataLoaded = true;
+
     });
-    this.field1Data = this.field1Data + this.field2Data;
+    }, 10000);
+  }
+
+  ngOnInit() {
   }
 }
