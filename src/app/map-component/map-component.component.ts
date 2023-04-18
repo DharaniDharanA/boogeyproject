@@ -11,9 +11,9 @@ export class MapComponentComponent implements OnInit {
 
   lat = 0;
   lng = 0;
+  status:String = 'yet to be known';
 
   constructor(private http: HttpClient) {}
-
   ngOnInit(): void {
     setInterval(() => {
       this.getLatLong().subscribe((data) => {
@@ -29,46 +29,40 @@ export class MapComponentComponent implements OnInit {
     return this.http.get<any>(url);
   }
   // google maps zoom level
-  zoom: number = 20;
-  
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
+  zoom: number = 15;
+  latitudeinput1: number = 0;
+  longitudeinput1: number = 0;
+  radiusinput1: number = 0;
+  latitude1: number = 0;
+  longitude1: number = 0;
+  radius1: number = 0;
+  distancebetween: number = 0;
+  printValues1() {
+    this.latitude1 = Number(this.latitudeinput1);
+    this.longitude1 = Number(this.longitudeinput1);
+    this.radius1 = Number(this.radiusinput1);
   }
-  
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
+  distance() {
+    const R = 6371; // Radius of the earth in km
+    const dLat = this.deg2rad(this.lat - this.latitude1);
+    const dLon = this.deg2rad(this.lng - this.longitude1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(this.deg2rad(this.latitude1)) * Math.cos(this.deg2rad(this.lat)) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    this.distancebetween = (d*1000.0);
+    if(this.distancebetween > this.radius1){
+      this.status = 'Out';
+    }
+    else{
+      this.status = 'In';
+    }
+    return (d*1000.0);
   }
-  
-  markers: marker[] = [
-	  {
-		  lat: 51.673858,
-		  lng: 7.815982,
-		  draggable: true
-	  },
-	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
-		  draggable: false
-	  },
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-		  draggable: true
-	  }
-  ]
 
-}
-// just an interface for type safety.
-interface marker {
-	lat: number;
-	lng: number;
-	draggable: boolean;
-}
-
-function ngOnInit(): ((error: any) => void) | null | undefined {
-  throw new Error('Function not implemented.');
+  deg2rad(deg: number): number {
+    return deg * (Math.PI / 180);
+  }
 }

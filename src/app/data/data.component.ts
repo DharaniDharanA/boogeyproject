@@ -31,7 +31,7 @@ export class DataComponent implements OnInit {
         this.humidity = data.feeds[1].field2;
       }
       this.dewpoint = this.temperature - ((100 - this.humidity) / 5);
-      if(this.humidity > 80.0){
+      if(this.humidity < 61.0 || this.temperature > 35.0){
         this.health = 'Bad condition';
         this.imgsrc = 'https://media.tenor.com/buvJxgoU8nAAAAAM/amiga-cow.gif';
       }

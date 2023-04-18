@@ -1,34 +1,38 @@
-
+<div class="whole-wrap">
+  <div class="setinput">
+    <form>
+      <label>Latitude:</label>
+      <input type="text" name="latitude" [(ngModel)]="latitudeinput1">
+      <label>Longitude:</label>
+      <input type="text" name="longitude" [(ngModel)]="longitudeinput1">
+      <label>Radius:</label>
+      <input type="text" name="radius" [(ngModel)]="radiusinput1">
+    </form>
+    <button (click)="printValues1()">Print Values</button>
+    <div>
+      Latitude: {{ latitude1 }}<br>
+      Longitude: {{ longitude1 }}<br>
+      Radius: {{ radius1 }}
+    </div>
+  </div>
+</div>
+<button (click)="distance()">Calculate</button>
+<div>Distance Between: {{distancebetween}} {{status}}</div>
 <div class="map-wrap">
-  <agm-map 
-  [latitude]="lat"
-  [longitude]="lng"
-  [zoom]="zoom"
-  [disableDefaultUI]="false"
-  [zoomControl]="false"
-  (mapClick)="mapClicked($event)">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
 
-  <agm-marker 
-      *ngFor="let m of markers; let i = index"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [markerDraggable]="m.draggable"
-      (dragEnd)="markerDragEnd(m, $event)">
-      
-    <agm-info-window>
-      <strong>InfoWindow content</strong>
-    </agm-info-window>
-    
-  </agm-marker>
-  
-  <agm-circle [latitude]="lat" [longitude]="lng" 
-      [radius]="5"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
-  </agm-circle>
+    <agm-marker [latitude]="lat" [longitude]="lng">
 
-</agm-map>
+      <agm-info-window>
+        <strong>The Cattle is here</strong>
+      </agm-info-window>
+
+    </agm-marker>
+
+    <agm-circle [latitude]="latitude1" [longitude]="longitude1" [radius]="radius1" [fillColor]="'red'">
+    </agm-circle>
+
+  </agm-map>
 </div>
 
 <div>{{lat}}</div>

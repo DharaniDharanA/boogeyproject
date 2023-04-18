@@ -1,11 +1,40 @@
-.map-thing {
-    position: fixed;
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-  }
-.main-wrapper{
-  display: flex;
-  background-color: #425a52;
+/* homepage.component.css */
+
+/* Styling for Header Section */
+header {
+  background-color: #f2f2f2;
+  padding: 20px;
 }
-  
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Styling for Main Content Section */
+main {
+  padding: 20px;
+}
+
+/* Styling for Footer Section */
+footer {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: center;
+}
